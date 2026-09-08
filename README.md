@@ -35,16 +35,20 @@ Copy `skills/jedi-review/` into `~/.claude/skills/`.
 
 ## Usage
 
-Invoke with `/jedi-review`, or say "jedi review," "adversarial review," "tear this apart," or "run the tribunal," and point it at a diff, branch, document, plan, spec, or quote. Add `--deep` to bring in persona walkthroughs and live end-to-end runs alongside the standard lenses.
+Invoke with `/jedi-review`, or say "jedi review," "adversarial review," "tear this apart," or "run the tribunal," and point it at a diff, branch, document, plan, spec, or quote. Add `--deep` to bring in the deep-mode grafts — persona walkthroughs, live end-to-end runs, and A/B against the pre-change state.
 
 ## Structure
 
 ```
+.claude-plugin/
+  plugin.json                     plugin manifest
+  marketplace.json                marketplace manifest
 skills/jedi-review/
   SKILL.md                        the six-stage contract
   references/attack-lenses.md     lens menus by target type: code, docs/plans/specs,
                                    quotes/financial, deep-mode grafts
   references/ledger-template.md   starter template for a target's LESSONS-DB.md
+  references/tribunal-mechanics.md  edge-state and independence rules for the tribunal
 tests/
   fixture/                        seeded-defect pricing memo + discount module
   ANSWER-KEY.md                   sealed defect list, for scoring only

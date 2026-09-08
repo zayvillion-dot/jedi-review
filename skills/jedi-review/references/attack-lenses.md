@@ -4,6 +4,8 @@ Reference menu for Jedi Review stage 1 (Scope). Pick lenses by target type and d
 
 Each lens below is a hostile mission for one subagent. The subagent's job is to break the target through that specific lens, not to give a general impression of quality.
 
+Every lens reports its strongest failed attacks alongside its findings — zero findings with no attack record means the lens did not run.
+
 ## Code
 
 - **Correctness / logic** — Find the boundary, off-by-one, or inverted condition that produces the wrong answer. Trace every conditional's edge values by hand: the value just below, at, and just above each threshold.
@@ -23,7 +25,7 @@ Each lens below is a hostile mission for one subagent. The subagent's job is to 
 - **Hostile-counterparty reading** — Read as the counterparty who wants to exploit this document. Find the clause they will claim says something the author didn't intend.
 - **Numeric consistency** — Recompute every figure in the document from its own stated inputs. Find the one total, rate, or date that doesn't follow from the numbers beside it.
 
-Every doc-type target ALWAYS runs ambiguity and internal contradiction. A generalist single-pass review's most common blind spot is exactly these two: a plausible-sounding sentence with two readings, and two sections that quietly disagree.
+Any target whose substance is prose — docs, plans, specs, quotes, contracts, emails — always runs ambiguity and internal contradiction. A generalist single-pass review's most common blind spot is exactly these two: a plausible-sounding sentence with two readings, and two sections that quietly disagree.
 
 ## Quotes / financial
 
@@ -31,6 +33,11 @@ Every doc-type target ALWAYS runs ambiguity and internal contradiction. A genera
 - **Margin / tier consistency** — Find the tier, job, or discount combination where the stated price doesn't yield the margin the pricing policy promises.
 - **Scope gap** — Find the work a customer will reasonably insist was included that the quote's line items don't actually cover.
 - **Terms risk** — Compare the payment schedule against real cash-flow timing. Find the gap between what the terms promise on paper and what the schedule can actually fund.
+
+## Fix re-review (stage-4 rounds only)
+
+- **Fix-refutation** — Attempt to prove the claimed fix does not fix the original defect: replay the original failure scenario against the new state.
+- **Fix-blast-radius** — Attack what the fix changed: its new defaults, its new paths, every caller and reader of the changed section. Assume the fix introduced a defect; find it.
 
 ## Deep mode grafts (`--deep` only)
 
@@ -40,6 +47,8 @@ Every doc-type target ALWAYS runs ambiguity and internal contradiction. A genera
 
 ## Selection guidance
 
-- Small targets: 2–3 lenses, chosen by the target's dominant risk (a payment-terms email gets terms risk + hostile-counterparty reading, not a full menu).
+- Small targets: the mandatory lenses for their type (see above) plus 1–2 chosen by the target's dominant risk — a payment-terms email runs ambiguity, internal contradiction, and terms risk.
 - Large targets: 5–7 lenses, covering structure, correctness, and the counterparty/reader angle together.
-- Never zero lenses, regardless of size — a target too small for one lens is too small to need review.
+- Never zero lenses, regardless of size.
+
+See `tribunal-mechanics.md` for round composition, lens failure states, and coverage rules.

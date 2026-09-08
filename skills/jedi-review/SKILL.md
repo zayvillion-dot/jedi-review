@@ -7,18 +7,20 @@ description: Use when the user says "jedi review", "adversarial review", "tear t
 
 ## Overview
 
-A review is an attack: findings are claims on trial, and every fix is new attack surface. Nothing ships until one full declared-tribunal round confirms zero defects.
+A review is an attack: findings are claims on trial, every fix is new attack surface. Nothing ships until one full declared-tribunal round confirms zero defects.
 
 Violating the letter of the protocol is violating the spirit of the protocol.
 
-## The Contract — run all 6 stages
+## The Contract — run 6 stages
 
-1. **Scope** — Name the target, type (code/doc/plan/spec/quote), size. Declare the tribunal: lenses from `references/attack-lenses.md`, why (2–3 small, 5–7 large); runs until one clean round. `--deep` adds persona walkthroughs and live end-to-end runs.
-2. **Attack** — Each lens runs as a parallel subagent to break the target. A finding IS a one-line claim, exact location, a concrete failure scenario (input/reading/sequence causing harm), and severity. No scenario, no finding.
-3. **Adjudicate** — A fresh, non-attacking skeptic subagent tries to REFUTE each finding. Verdict is binary: CONFIRMED, evidence quoted, or REFUTED, reason quoted — never "worth a look." Only confirmed findings proceed; "most attacks failed, N confirmed" is legitimate.
-4. **Fix re-review** — After fixes land outside this skill, re-enter and re-attack each fix: refute that claim, and attack its new state for fix-introduced defects. A "fixed" comment is a claim on trial, not evidence — fix rounds routinely introduce new defects.
-5. **Gate** — PASS only when one full round, all lenses, yields zero confirmed findings. Report lenses × rounds and raised/confirmed/refuted. Approving "after quick fixes" without re-entering stage 4 is a violation, not a shortcut.
-6. **Ledger** — Append every confirmed defect to `LESSONS-DB.md` at the target's root (create from `references/ledger-template.md` if absent): defect, root cause, prevention rule. Record recurring "not bugs — do not fix" decisions in its table.
+1. **Scope** — Name target, type, size. Declare lenses from `references/attack-lenses.md`, why (2–3 small, 5–7 large); runs until one clean round. `--deep` adds every deep-mode graft lens.
+2. **Attack** — Each lens is a parallel subagent attacking the target. A finding is a one-line claim, exact location, failure scenario, and severity — no scenario, no finding.
+3. **Adjudicate** — One fresh skeptic per round, never its attacker, adjudicates every finding raised. Verdict is binary: CONFIRMED, evidence quoted, or REFUTED, reason quoted — never "worth a look."
+4. **Fix re-review** — After fixes land, re-enter: the Fix re-review lenses (fix-refutation, fix-blast-radius) run, scoped to the fixes. A "fixed" comment is a claim, not evidence — fix rounds routinely introduce new defects.
+5. **Gate** — PASS only when the full declared stage-1 tribunal re-runs clean against the current state. Report each round's lenses and raised/confirmed/refuted. PASS is a review verdict, not authorization — ship/merge/send stays the user's call. Approving "quick fixes" without stage 4 is a violation, not a shortcut.
+6. **Ledger** — Append every confirmed defect to `LESSONS-DB.md` at the reviewed project's root (create from `references/ledger-template.md` if absent) every round, not just PASS: defect, root cause, prevention rule. Record recurring "not bugs" decisions in its table.
+
+Edge states — silent or failed lenses, coverage, refuted re-raise, fix-author independence, non-convergence — live in `references/tribunal-mechanics.md`.
 
 ## Rationalization table
 
@@ -29,14 +31,14 @@ Violating the letter of the protocol is violating the spirit of the protocol.
 | "We're out of time" | The gate is the schedule; a shipped defect costs more. |
 | "It's the third revision, everyone's tired" | Fatigue causes escapes. The protocol doesn't get tired. |
 | "The finding is probably fine, probably intentional" | "Probably" isn't a verdict — adjudicate: CONFIRMED or REFUTED. |
-| "This target is too small for the tribunal" | Small targets get a small tribunal (2 lenses), never zero. |
+| "This target is too small for the tribunal" | Small targets get a small tribunal (2–3 lenses), never zero. |
 
 ## Red flags — stop, the protocol has failed
 
 - Acted on an unverified finding.
 - A verdict that isn't CONFIRMED or REFUTED.
 - Approved shipping on unreviewed fixes.
-- A fix reviewed against its old bug, not its new state.
+- A fix reviewed against its old bug, not new state.
 - A finding with no failure scenario.
 - Declared PASS with any confirmed finding open.
 - Skipped the ledger because "we'll remember."

@@ -19,7 +19,7 @@ Every lens reports its strongest failed attacks alongside its findings — zero 
 ## Docs / plans / specs
 
 - **Internal contradiction** — Find two sections that disagree on the same number, term, or rule. Quote both, verbatim, side by side.
-- **Ambiguity** — Find the sentence that reads two genuinely different ways. Write out both readings in full; if both are plausible to a reasonable reader, it is a defect, not a style note.
+- **Ambiguity** — Find the sentence that reads two genuinely different ways. Write out both readings in full — the two written-out readings are the finding's failure scenario; if both are plausible to a reasonable reader, it is a defect, not a style note.
 - **Omission** — Find the case the document silently doesn't cover. Ask what happens when the stated rule's precondition doesn't hold.
 - **Feasibility / cost** — Find the step that won't survive contact with reality — the timeline, budget, headcount, or dependency that's silently assumed rather than secured.
 - **Hostile-counterparty reading** — Read as the counterparty who wants to exploit this document. Find the clause they will claim says something the author didn't intend.

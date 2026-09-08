@@ -61,6 +61,10 @@ tests/
 
 Built RED before GREEN: a generalist single-pass review was run against a seeded-defect fixture under time, authority, and sunk-cost pressure, and the failures it produced are what this skill's six stages are built to close. See `tests/red-baseline.md` for the baseline run, `tests/green-run.md` for the same scenario re-run with the skill applied, and `tests/ANSWER-KEY.md` for the seeded defects the baseline missed or hedged on.
 
+## Origin story
+
+The skill's first real target was itself. Its own tribunal ran four rounds against this package — 39 findings confirmed and fixed or recorded, including defects in the protocol's own constitution (a phantom lens its example cited before any menu defined it, an escape hatch its rationalization table explicitly forbids, a fallback rule that would have let a fix's author grade its own fix). On round four, the protocol's non-convergence rule fired — three consecutive fix rounds each confirming new defects — and the review stopped itself, leaving five open wording-hygiene findings for a human call rather than rubber-stamping its author. The full record lives in this repo's own `LESSONS-DB.md`. The gate does not have a "good enough" exit, even for the skill that defines it.
+
 ## License
 
 MIT — see `LICENSE`.

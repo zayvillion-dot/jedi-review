@@ -9,7 +9,7 @@ Running database of confirmed defects, their root causes, and the prevention rul
 ## Review: 2026-09-08 — jedi-review skill package (self-review)
 
 **Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md; + tribunal-mechanics.md, created by round-1 fixes and in scope from round 2), doc/spec target, 5 files ~260 lines
-**Process:** rounds: 3 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0; round 3 (fix re-review): fix-refutation (0 raised, attack record filed), fix-blast-radius (2) — raised 5 / confirmed 4 / refuted 1
+**Process:** rounds: 3 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0; round 3 (fix re-review): fix-refutation (0 raised, attack record filed), fix-blast-radius (2) — raised 5 / confirmed 4 / refuted 1; round 4 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 6 / confirmed 5 / refuted 1 — **non-convergence stop triggered** (third consecutive confirming fix round)
 **Status:** OPEN
 
 ### Confirmed defects
@@ -50,6 +50,11 @@ Running database of confirmed defects, their root causes, and the prevention rul
 | R3-2 | The ledger's own Scope line still said "4 files ~250 lines," omitting tribunal-mechanics.md — the file carrying most of the review's fixes — so a gate reviewer bounding scope by it would skip that file. | The scope line was written before the target grew and never re-synced. | When a review's fixes add files to the target, update the Scope line in the same commit. |
 | R3-3 | The live ledger's header carried the insertion marker but not the template's "never open a second section — update in place" governance, and no protocol step ever re-consults the template after creation. | The fix updated the template but not the already-instantiated artifact. | When a template rule changes, propagate it to every live instance in the same commit. |
 | R3-5 | The fallback bar said "authored or directed the fix" while the adjacent independence rule said only "the fix's author" — a fix-directing orchestrator was barred from the narrow path but arguably allowed on the wide one. | A loophole was closed in one clause without re-checking the sibling clause guarding the same risk. | When broadening one rule's language to close a loophole, sweep every sibling rule guarding the same risk. |
+| R4-1 | The example's accountability line covered only the one lens that had been silent — unattributed outcome lines still hide whichever other lens goes silent. | The fix closed the observed instance, not the property (every lens's run-status independently visible). | Fix the property an example must demonstrate, not the instance that got caught. |
+| R4-3 | The original defect's second clause — no protocol step ever re-consults the template after creation — survived; the instance was patched, the drift mechanism wasn't. | A two-clause defect got a one-clause fix. | Enumerate a confirmed finding's clauses and close each, or record the remainder as open. |
+| R4-4 | The independence rule's parenthetical defined director as "designed and directed" (conjunctive) while the fallback bar triggers on "directed" alone — the inverted-strictness gap re-opened one clause deeper for directed-only orchestrators. | The broadened wording introduced its own definition instead of reusing the sibling clause's terms. | When aligning two rules, use identical operative words, not a paraphrase. |
+| R4-5 | "Briefed only on the fix's stated claim, nothing more, from anyone" read literally bars the skeptic from receiving the findings stage 3 requires it to adjudicate — live practice cannot satisfy the letter. | Closing a narrow briefing loophole with universal language swept in legitimate information flows. | Scope an information-cap rule to the flow it polices; test the letter against each stage's required inputs. |
+| R4-6 | The live ledger header became a third divergent paraphrase of the one-section rule — recommitting the already-ledgered R2-4 defect class ("one source of truth") in the same commit that cited it. | The fix pasted a paraphrase instead of a reference. | State a rule once; instances point to it. |
 
 ### Deliberate decisions (not bugs — do not "fix")
 
@@ -59,7 +64,8 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ### Follow-ups
 
-- Round-4 fix re-review of the R3 fixes pending (second consecutive confirming fix round — one more triggers the non-convergence stop), then the full-tribunal gate round.
-- R3-4 (Status computability) REFUTED round 3: status is set contemporaneously by the round-closing agent, not derived from table rows.
+- **NON-CONVERGENCE STOP (2026-09-08, per tribunal-mechanics.md):** rounds 2, 3, and 4 each ended with confirmed findings. Review halted before a round 5; open items and the approach question go to the user. Open: R4-1, R4-3, R4-4, R4-5, R4-6 (all wording-hygiene severity; no protocol-diverging high-severity item open).
+- Approach question for the user: a prose protocol reviewed by prose lenses mints new attack surface with every fix round. Options: (a) one surgical fix pass for the 5 open items + gate round, accepting the same risk again; (b) tighten the gate-round defect bar for protocol-document targets (confirm only protocol-divergence/misleading-reader, exclude wording-hygiene); (c) record SHIPPED OVER OPEN FINDINGS with these 5 as the user's accepted residue.
+- R3-4 (Status computability) REFUTED round 3: status is set contemporaneously by the round-closing agent, not derived from table rows. R4-2 (ledger-in-scope) REFUTED round 4: the ledger is a process artifact, not the deliverable.
 
 ---

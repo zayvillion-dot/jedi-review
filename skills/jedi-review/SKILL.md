@@ -15,12 +15,12 @@ Violating the letter of the protocol is violating the spirit of the protocol.
 
 1. **Scope** — Name target, type, size. Declare lenses from `references/attack-lenses.md`, why (2–3 small, 5–7 large); runs until one clean round. `--deep` adds every deep-mode graft lens.
 2. **Attack** — Each lens is a parallel subagent attacking the target. A finding is a one-line claim, exact location, failure scenario, and severity — no scenario, no finding.
-3. **Adjudicate** — One fresh skeptic per round, never its attacker, adjudicates every finding raised. Verdict is binary: CONFIRMED, evidence quoted, or REFUTED, reason quoted — never "worth a look."
-4. **Fix re-review** — After fixes land, re-enter: the Fix re-review lenses (fix-refutation, fix-blast-radius) run, scoped to the fixes. A "fixed" comment is a claim, not evidence — fix rounds routinely introduce new defects.
-5. **Gate** — PASS only when the full declared stage-1 tribunal re-runs clean against the current state. Report each round's lenses and raised/confirmed/refuted. PASS is a review verdict, not authorization — ship/merge/send stays the user's call. Approving "quick fixes" without stage 4 is a violation, not a shortcut.
-6. **Ledger** — Append every confirmed defect to `LESSONS-DB.md` at the reviewed project's root (create from `references/ledger-template.md` if absent) every round, not just PASS: defect, root cause, prevention rule. Record recurring "not bugs" decisions in its table.
+3. **Adjudicate** — One fresh skeptic per round, never its attacker, adjudicates every finding. Verdict is binary: CONFIRMED, evidence quoted, or REFUTED, reason quoted — never "worth a look."
+4. **Fix re-review** — After fixes land, re-enter: fix rounds run the Fix re-review menu in `references/attack-lenses.md`, scoped to the fixes. A "fixed" comment is a claim, not evidence — fix rounds routinely introduce new defects.
+5. **Gate** — PASS only when the full declared stage-1 tribunal re-runs clean against the current state. Report each round's lenses and raised/confirmed/refuted. PASS is a review verdict, not authorization — ship/merge/send stays the user's call. Approving "quick fixes" without stage 4 is a violation.
+6. **Ledger** — Append every confirmed defect to `LESSONS-DB.md` at the reviewed project's root (create from `references/ledger-template.md` if absent) every round, not just PASS: defect, root cause, prevention rule. Record recurring "not bugs" decisions.
 
-Edge states — silent or failed lenses, coverage, refuted re-raise, fix-author independence, non-convergence — live in `references/tribunal-mechanics.md`.
+Edge states — silent or failed lenses, coverage, refuted re-raise, fix-author independence, non-convergence, round composition, unlisted target types — live in `references/tribunal-mechanics.md`.
 
 ## Rationalization table
 
@@ -46,7 +46,7 @@ Edge states — silent or failed lenses, coverage, refuted re-raise, fix-author 
 ## Report format
 
 ```
-Round 2 (fix re-review) — lenses: fix-refutation, regression (2)
+Round 2 (fix re-review) — lenses: fix-refutation, fix-blast-radius, regression (3)
 Raised: 2  Confirmed: 1  Refuted: 1
 CONFIRMED — discount.py L27: "#12" fix skips premium coupon
 REFUTED — total error (recomputed)

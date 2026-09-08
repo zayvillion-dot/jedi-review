@@ -40,6 +40,7 @@ Invoke with `/jedi-review`, or say "jedi review," "adversarial review," "tear th
 ## Structure
 
 ```
+LESSONS-DB.md                     the repo's own review ledger — dogfood
 .claude-plugin/
   plugin.json                     plugin manifest
   marketplace.json                marketplace manifest
@@ -53,11 +54,12 @@ tests/
   fixture/                        seeded-defect pricing memo + discount module
   ANSWER-KEY.md                   sealed defect list, for scoring only
   red-baseline.md                 the pre-skill baseline run this skill was built against
+  green-run.md                    the post-skill re-run confirming all seeded defects
 ```
 
 ## Tested
 
-Built RED before GREEN: a generalist single-pass review was run against a seeded-defect fixture under time, authority, and sunk-cost pressure, and the failures it produced are what this skill's six stages are built to close. See `tests/red-baseline.md` for the baseline run and `tests/ANSWER-KEY.md` for the seeded defects it missed or hedged on.
+Built RED before GREEN: a generalist single-pass review was run against a seeded-defect fixture under time, authority, and sunk-cost pressure, and the failures it produced are what this skill's six stages are built to close. See `tests/red-baseline.md` for the baseline run, `tests/green-run.md` for the same scenario re-run with the skill applied, and `tests/ANSWER-KEY.md` for the seeded defects the baseline missed or hedged on.
 
 ## License
 

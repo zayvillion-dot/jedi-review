@@ -1,8 +1,10 @@
 # LESSONS-DB.md — template
 
-Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult it before similar work; append one section per Jedi Review. Lives at the reviewed project's root — its git repo root, or for a standalone artifact, the folder holding it — as `LESSONS-DB.md`.
+Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult it before similar work. Lives at the reviewed project's root — its git repo root, or for a standalone artifact, the folder holding it — as `LESSONS-DB.md`.
 
-Copy everything between the `---` lines below for each new review. Newest review goes on top, oldest at the bottom.
+One section per review, inserted directly below the marker, newest-first. For a new review, copy everything between the `---` lines below and insert the copy directly under the marker. For a review already in progress, never open a second section: update its existing section in place as each round's adjudication closes — add rows to the Confirmed defects table, update the Process and Status lines.
+
+<!-- New review sections go directly below this line, newest first. -->
 
 ---
 
@@ -30,5 +32,3 @@ Copy everything between the `---` lines below for each new review. Newest review
 - <work deferred out of this review, with an owner if known>
 
 ---
-
-<!-- Insert each new review's block directly below this line; keep newest-first order. -->

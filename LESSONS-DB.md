@@ -2,13 +2,15 @@
 
 Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult before similar work.
 
+<!-- New review sections go directly below this line, newest first. -->
+
 ---
 
 ## Review: 2026-09-08 — jedi-review skill package (self-review)
 
 **Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md), doc/spec target, 4 files ~250 lines
-**Process:** rounds: 1 — lenses per round: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2
-**Status:** OPEN (fix re-review pending)
+**Process:** rounds: 2 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0
+**Status:** OPEN
 
 ### Confirmed defects
 
@@ -36,18 +38,23 @@ Running database of confirmed defects, their root causes, and the prevention rul
 | V | The ledger template gave no instructions for a target that already has a differently-structured LESSONS-DB.md, risking a naive append that rewrites prior entries. | Template assumed every project starts its ledger from this template, never from its own prior file. | Append new material under its own heading; never rewrite or restructure what already exists. |
 | W | The three lens menus (code / docs-plans-specs / quotes-financial) don't cover every target type, and stage 1 gave no instruction for what an uncovered target should do. | Menu enumerated the common cases and never named what covers the rest. | Give every closed menu an explicit by-analogy path for the uncovered case, named at the point of use. |
 | X | README's structure tree omitted the repo's real `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` manifests and the new `references/tribunal-mechanics.md`. | Tree was written once at scaffold time and never re-synced as real files were added. | Diff the documented structure against the actual file listing before shipping docs that describe repo layout. |
+| R2-1 | The in-line-by-orchestrator fallback for a failed lens had no stage-4 exception, letting a fix's own author self-grade the fix when acting as orchestrator. | Two rules were written without checking their interaction. | When adding a fallback, test it against every independence rule it could bypass. |
+| R2-2 | Non-convergence's "three rounds that confirm new defects" wording excluded the loop where the same original defect simply never gets fixed. | The trigger was worded from the writer's example, not the failure class it needed to cover. | Word triggers by failure class, then test each paradigm case against the wording. |
+| R2-3 | The unlisted-target-type by-analogy rule was undiscoverable from any signposted path — no pointer named it. | The rule was filed where it fit, not where it's needed. | Put rules at their point of use, or name them in every pointer that gates them. |
+| R2-4 | Fix-round lens composition was stated three different ways, across SKILL.md's stage 4, tribunal-mechanics.md, and the report-format example. | The same rule was restated in three places instead of defined once. | Keep one source of truth for a rule; everything else references it. |
+| R2-5 | Ledger section placement and cardinality contradicted themselves; the round-1 refutation of the insertion-marker wording was overturned on re-raise with new evidence. | Placement instructions were written from the template's point of view, not the ledger file's full lifecycle. | Walk the artifact's full lifecycle before writing placement rules. |
+| R2-6 | The SHIPPED OVER OPEN FINDINGS status value existed but nothing in the protocol specified what triggers it. | The enum value was added without its transition event. | Every status value ships with the event that sets it. |
+| R2-7 | README's structure tree drifted from the real file layout again within the same session that had just fixed it. | The tree was edited by hand per change instead of regenerated from disk. | Diff docs-vs-disk as a final check on every commit touching layout. |
+| R2-8 | The small-target selection formula ("mandatory lenses (see above) plus 1–2") yielded only 1–2 lenses for small code targets, which have no named mandatory lenses. | The formula assumed every menu defines mandatory lenses. | Evaluate every formula against each case it must cover. |
 
 ### Deliberate decisions (not bugs — do not "fix")
 
 | Decision | Rationale |
 |---|---|
 | Frontmatter description's self-trigger clause ("Also use before declaring any significant piece of work \"done\"") stays exactly as written. | Intended: the skill is meant to act as a standing pre-"done" gate, not only a tool invoked by name — the self-trigger is deliberate scope, not scope creep. |
-| Ledger template's insertion-marker comment (line 33: "Insert each new review's block directly below this line; keep newest-first order.") stays exactly as written. | Mechanically correct as written — the copy-paste-per-review workflow it describes is unambiguous; refuted. |
 
 ### Follow-ups
 
-- Fix re-review round pending (this review's stage 4/5): re-attack the fixes now applied to SKILL.md, attack-lenses.md, ledger-template.md, and README.md — via the Fix re-review lenses (fix-refutation, fix-blast-radius) — before this review can PASS.
+- Round-3 fix re-review of these 8 fixes (R2-1…R2-8) pending, then the full-tribunal gate round.
 
 ---
-
-<!-- Insert each new review's block directly below this line; keep newest-first order. -->

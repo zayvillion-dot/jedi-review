@@ -47,8 +47,9 @@ Any target whose substance is prose — docs, plans, specs, quotes, contracts, e
 
 ## Selection guidance
 
-- Small targets: the mandatory lenses for their type (see above) plus 1–2 chosen by the target's dominant risk — a payment-terms email runs ambiguity, internal contradiction, and terms risk.
+- Small targets: 2–3 lenses. Prose targets (docs, plans, specs, quotes, contracts, emails): the two mandatory lenses (ambiguity, internal contradiction) plus up to one more chosen by the target's dominant risk — a payment-terms email runs ambiguity, internal contradiction, and terms risk. Every other target type: 2–3 lenses chosen by the target's dominant risk.
 - Large targets: 5–7 lenses, covering structure, correctness, and the counterparty/reader angle together.
 - Never zero lenses, regardless of size.
+- A target outside these menus declares lenses by analogy to the nearest menu and names the analogy (e.g., an infra config reviews as code).
 
-See `tribunal-mechanics.md` for round composition, lens failure states, and coverage rules.
+See `tribunal-mechanics.md` for round composition, lens failure states, coverage rules, and unlisted target types.

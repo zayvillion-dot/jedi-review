@@ -17,7 +17,7 @@ Violating the letter of the protocol is violating the spirit of the protocol.
 2. **Attack** — Each lens runs as a parallel subagent to break the target. A finding IS a one-line claim, exact location, a concrete failure scenario (input/reading/sequence causing harm), and severity. No scenario, no finding.
 3. **Adjudicate** — A fresh, non-attacking skeptic subagent tries to REFUTE each finding. Verdict is binary: CONFIRMED, evidence quoted, or REFUTED, reason quoted — never "worth a look." Only confirmed findings proceed; "most attacks failed, N confirmed" is legitimate.
 4. **Fix re-review** — After fixes land outside this skill, re-enter and re-attack each fix: refute that claim, and attack its new state for fix-introduced defects. A "fixed" comment is a claim on trial, not evidence — fix rounds routinely introduce new defects.
-5. **Gate** — PASS only when one full round, all lenses, yields zero confirmed findings. Report lenses × rounds and raised/confirmed/refuted. Open findings mean no pass; approving "after quick fixes" without re-entering stage 4 is a violation, not a shortcut.
+5. **Gate** — PASS only when one full round, all lenses, yields zero confirmed findings. Report lenses × rounds and raised/confirmed/refuted. Approving "after quick fixes" without re-entering stage 4 is a violation, not a shortcut.
 6. **Ledger** — Append every confirmed defect to `LESSONS-DB.md` at the target's root (create from `references/ledger-template.md` if absent): defect, root cause, prevention rule. Record recurring "not bugs — do not fix" decisions in its table.
 
 ## Rationalization table
@@ -47,6 +47,6 @@ Violating the letter of the protocol is violating the spirit of the protocol.
 Round 2 (fix re-review) — lenses: fix-refutation, regression (2)
 Raised: 2  Confirmed: 1  Refuted: 1
 CONFIRMED — discount.py L27: "#12" fix skips premium coupon
-REFUTED — claimed total error (recomputed)
-Gate: FAIL — fix, then re-enter stage 4.
+REFUTED — total error (recomputed)
+Gate: FAIL — fix, re-enter stage 4.
 ```

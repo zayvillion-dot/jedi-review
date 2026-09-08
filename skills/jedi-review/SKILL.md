@@ -50,6 +50,6 @@ Round 2 (fix re-review) — lenses: fix-refutation, fix-blast-radius, regression
 Raised: 2  Confirmed: 1  Refuted: 1
 CONFIRMED — discount.py L27: "#12" fix skips premium coupon
 REFUTED — total error (recomputed)
-regression: 0 raised, attack record filed
+regression: 0 raised, attacks recorded
 Gate: FAIL — fix, re-enter stage 4.
 ```

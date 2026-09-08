@@ -1,0 +1,10 @@
+{
+  "name": "jedi-review",
+  "description": "Adversarial review tribunal for any deliverable: parallel attack lenses, findings adversarially verified, fixes re-attacked, zero-confirmed-defect gate, defect ledger.",
+  "version": "0.1.0",
+  "author": { "name": "Isaiah Brooks" },
+  "homepage": "https://github.com/zayvillion-dot/jedi-review",
+  "repository": "https://github.com/zayvillion-dot/jedi-review",
+  "license": "MIT",
+  "keywords": ["skills", "code-review", "adversarial-review", "quality", "zero-defect", "six-sigma", "verification"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "jedi-review",
+  "description": "Marketplace for the jedi-review adversarial review skill",
+  "owner": { "name": "Isaiah Brooks" },
+  "plugins": [
+    { "name": "jedi-review", "description": "Adversarial review tribunal loop with zero-confirmed-defect gate and defect ledger", "version": "0.1.0", "source": "./", "author": { "name": "Isaiah Brooks" } }
+  ]
+}

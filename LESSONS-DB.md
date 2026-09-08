@@ -1,6 +1,6 @@
 # LESSONS-DB.md
 
-Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult before similar work.
+Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult before similar work. One section per review: for a review already in progress, never open a second section — update its existing section in place as each round's adjudication closes (add rows to the Confirmed defects table, update the Process and Status lines).
 
 <!-- New review sections go directly below this line, newest first. -->
 
@@ -8,8 +8,8 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ## Review: 2026-09-08 — jedi-review skill package (self-review)
 
-**Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md), doc/spec target, 4 files ~250 lines
-**Process:** rounds: 2 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0
+**Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md; + tribunal-mechanics.md, created by round-1 fixes and in scope from round 2), doc/spec target, 5 files ~260 lines
+**Process:** rounds: 3 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0; round 3 (fix re-review): fix-refutation (0 raised, attack record filed), fix-blast-radius (2) — raised 5 / confirmed 4 / refuted 1
 **Status:** OPEN
 
 ### Confirmed defects
@@ -46,6 +46,10 @@ Running database of confirmed defects, their root causes, and the prevention rul
 | R2-6 | The SHIPPED OVER OPEN FINDINGS status value existed but nothing in the protocol specified what triggers it. | The enum value was added without its transition event. | Every status value ships with the event that sets it. |
 | R2-7 | README's structure tree drifted from the real file layout again within the same session that had just fixed it. | The tree was edited by hand per change instead of regenerated from disk. | Diff docs-vs-disk as a final check on every commit touching layout. |
 | R2-8 | The small-target selection formula ("mandatory lenses (see above) plus 1–2") yielded only 1–2 lenses for small code targets, which have no named mandatory lenses. | The formula assumed every menu defines mandatory lenses. | Evaluate every formula against each case it must cover. |
+| R3-1 | The report-format example, bumped to 3 lenses by the R2-4 fix, kept only 2 outcome lines — modeling a silent lens the lens-accountability rule declares an incomplete round. | A fix edited one line of an example without re-checking the whole block against the rules it models. | After fixing any part of an example, re-verify the entire example against every rule it illustrates. |
+| R3-2 | The ledger's own Scope line still said "4 files ~250 lines," omitting tribunal-mechanics.md — the file carrying most of the review's fixes — so a gate reviewer bounding scope by it would skip that file. | The scope line was written before the target grew and never re-synced. | When a review's fixes add files to the target, update the Scope line in the same commit. |
+| R3-3 | The live ledger's header carried the insertion marker but not the template's "never open a second section — update in place" governance, and no protocol step ever re-consults the template after creation. | The fix updated the template but not the already-instantiated artifact. | When a template rule changes, propagate it to every live instance in the same commit. |
+| R3-5 | The fallback bar said "authored or directed the fix" while the adjacent independence rule said only "the fix's author" — a fix-directing orchestrator was barred from the narrow path but arguably allowed on the wide one. | A loophole was closed in one clause without re-checking the sibling clause guarding the same risk. | When broadening one rule's language to close a loophole, sweep every sibling rule guarding the same risk. |
 
 ### Deliberate decisions (not bugs — do not "fix")
 
@@ -55,6 +59,7 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ### Follow-ups
 
-- Round-3 fix re-review of these 8 fixes (R2-1…R2-8) pending, then the full-tribunal gate round.
+- Round-4 fix re-review of the R3 fixes pending (second consecutive confirming fix round — one more triggers the non-convergence stop), then the full-tribunal gate round.
+- R3-4 (Status computability) REFUTED round 3: status is set contemporaneously by the round-closing agent, not derived from table rows.
 
 ---

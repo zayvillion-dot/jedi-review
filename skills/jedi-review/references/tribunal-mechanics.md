@@ -28,7 +28,7 @@ An attacker may re-raise a REFUTED finding once, only with new evidence the skep
 
 ## Fix-author independence
 
-Stage-4 attackers and skeptic are never the fix's author and are not briefed by the author beyond the fix's stated claim ("what it fixes, where").
+Stage-4 attackers and skeptic are never the fix's author or director — the agent or session that wrote the fix, or that designed and directed it — and are briefed only on the fix's stated claim ("what it fixes, where"), nothing more, from anyone.
 
 ## Non-convergence
 

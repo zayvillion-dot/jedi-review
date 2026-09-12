@@ -12,7 +12,7 @@ Round 1 = the full declared tribunal. Fix rounds = the Fix re-review menu (see `
 
 ## Lens accountability
 
-Every lens reports its strongest failed attacks alongside its findings. A lens returning zero findings and no attack record did not run — the round is incomplete.
+Every lens reports its strongest failed attacks alongside its findings. A lens returning zero findings and no attack record did not run — the round is incomplete. In round reports, every finding line names its lens, and every declared lens appears — with findings, or with its attack record — so a silent lens is visible no matter which lens goes silent.
 
 ## Lens failure states
 
@@ -28,7 +28,7 @@ An attacker may re-raise a REFUTED finding once, only with new evidence the skep
 
 ## Fix-author independence
 
-Stage-4 attackers and skeptic are never the fix's author or director — the agent or session that wrote the fix, or that designed and directed it — and are briefed only on the fix's stated claim ("what it fixes, where"), nothing more, from anyone.
+Stage-4 attackers and skeptic are never any agent or session that authored or directed the fix under review. Attackers are briefed on a fix only via its stated claim ("what it fixes, where") — no author or director adds anything beyond that claim. The skeptic receives the attackers' findings, as stage 3 requires.
 
 ## Non-convergence
 
@@ -36,7 +36,7 @@ After three consecutive fix rounds that each end with any confirmed finding — 
 
 ## Interruption and standing state
 
-A review keeps exactly one ledger section for its whole lifetime. That section is updated as each round's adjudication closes, not only at PASS — add rows to the Confirmed defects table, update the Process and Status lines — so an interrupted review keeps its record. Never open a second section for the same review.
+A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS — add rows to the Confirmed defects table, update the Process and Status lines — so an interrupted review keeps its record. Sectioning and placement rules live in `ledger-template.md`, which is canonical; if a live ledger's header instructions ever disagree with the template, re-sync the header to the template at the next round close.
 
 Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when.
 

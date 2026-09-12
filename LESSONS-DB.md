@@ -1,6 +1,6 @@
 # LESSONS-DB.md
 
-Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult before similar work. One section per review: for a review already in progress, never open a second section — update its existing section in place as each round's adjudication closes (add rows to the Confirmed defects table, update the Process and Status lines).
+Running database of confirmed defects, their root causes, and the prevention rule each one taught. Consult before similar work. Sectioning and update rules: `skills/jedi-review/references/ledger-template.md` (canonical — one section per review, updated in place as rounds close).
 
 <!-- New review sections go directly below this line, newest first. -->
 
@@ -64,8 +64,7 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ### Follow-ups
 
-- **NON-CONVERGENCE STOP (2026-09-08, per tribunal-mechanics.md):** rounds 2, 3, and 4 each ended with confirmed findings. Review halted before a round 5; open items and the approach question go to the user. Open: R4-1, R4-3, R4-4, R4-5, R4-6 (all wording-hygiene severity; no protocol-diverging high-severity item open).
-- Approach question for the user: a prose protocol reviewed by prose lenses mints new attack surface with every fix round. Options: (a) one surgical fix pass for the 5 open items + gate round, accepting the same risk again; (b) tighten the gate-round defect bar for protocol-document targets (confirm only protocol-divergence/misleading-reader, exclude wording-hygiene); (c) record SHIPPED OVER OPEN FINDINGS with these 5 as the user's accepted residue.
+- **NON-CONVERGENCE STOP (2026-09-08)** was reported to the user with three options; **user resumed the review 2026-09-12 (option a: surgical fix pass + gate round)**. R4-1/R4-3/R4-4/R4-5/R4-6 fixes applied per the ledger's own prevention rules (identical operative words, references not paraphrases, property not instance). Round-5 fix re-review pending, then the gate round.
 - R3-4 (Status computability) REFUTED round 3: status is set contemporaneously by the round-closing agent, not derived from table rows. R4-2 (ledger-in-scope) REFUTED round 4: the ledger is a process artifact, not the deliverable.
 
 ---

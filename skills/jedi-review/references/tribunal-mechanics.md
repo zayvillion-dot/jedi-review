@@ -39,13 +39,13 @@ These rules bind every round that reviews or gates fixed work — fix rounds and
 
 ## Non-convergence
 
-A confirming round is any round — fix round or gate round — that ends with at least one confirmed finding: a newly introduced defect, a newly surfaced one, or an original still standing unfixed. After three confirming rounds, counted from the review's start, its last PASS, or the user's last authorization to continue — clean rounds in between do not reset the count — stop. Report the pattern to the user and question the fix approach itself before burning another round. User authorization resets the count to zero.
+A confirming round is any round — fix round or gate round — that ends with at least one confirmed finding: a newly introduced defect, a newly surfaced one, or an original still standing unfixed. After three confirming rounds, counted from the review's start or the user's last authorization to continue — clean rounds in between do not reset the count — stop. Report the pattern to the user and question the fix approach itself before burning another round. User authorization resets the count to zero.
 
 ## Interruption and standing state
 
 A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS, so an interrupted review keeps every closed round's record. A round interrupted between attack and adjudication is void: its raised findings are unadjudicated claims — discard them, and the resuming session re-runs that round from stage 2. Every round close performs three steps: add the round's confirmed rows to the Confirmed defects table; update the Process and Status lines; compare the live ledger's header instructions against `ledger-template.md` (which is canonical for sectioning and placement) and re-sync the header if they differ.
 
-Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when.
+Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when. PASS ends the review; any later review of the same target — deeper lenses included — is a new review, with its own ledger section and a fresh count.
 
 ## Pre-existing ledger
 

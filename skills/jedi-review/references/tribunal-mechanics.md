@@ -8,7 +8,7 @@ One fresh skeptic subagent per round adjudicates all of that round's findings; t
 
 ## Round composition
 
-Round 1 = the full declared tribunal. Fix rounds = the Fix re-review menu (see `attack-lenses.md`) plus regression when the target is code, scoped to the fixes and their blast radius. The gate round = the full declared stage-1 tribunal re-run against the current state; when it confirms zero findings, PASS. A clean fix round alone never passes the gate.
+Round 1 = the full declared tribunal; if it confirms zero findings, round 1 is the gate round and the review passes — no duplicate run is owed. Fix rounds = the Fix re-review menu (see `attack-lenses.md`) plus regression when the target is code, scoped to the fixes and their blast radius. The gate round = the full declared stage-1 tribunal run again against the current state; when it confirms zero findings, PASS. A clean fix round alone never passes the gate.
 
 ## Lens accountability
 
@@ -16,11 +16,11 @@ Every lens reports its strongest failed attacks alongside its findings. A lens r
 
 ## Lens failure states
 
-A lens that cannot dispatch runs serially, or in-line by the orchestrator as last resort. A lens that errored or never returned is reported DID NOT RUN; a round containing one cannot reach the gate. The in-line-by-orchestrator fallback never applies to a stage-4 lens when the orchestrator authored or directed the fix under review: such a lens runs as a subagent, or is reported DID NOT RUN, blocking the gate.
+A lens that cannot dispatch runs serially, or in-line by the orchestrator as last resort. A lens that errored or never returned is reported DID NOT RUN; a round containing one cannot reach the gate. The in-line-by-orchestrator fallback never applies to a stage-4 lens when the orchestrator authored or directed the fix under review: such a lens runs as a subagent, or is reported DID NOT RUN, blocking the gate. If that rule would leave every stage-4 lens DID NOT RUN (no dispatch available and the orchestrator authored or directed the fix), the review pauses: report the blocked state to the user and hand stage 4 to a session or agent that did not author or direct the fix.
 
 ## Coverage
 
-Each lens declares coverage: FULL, or PARTIAL plus what it read. PARTIAL coverage on any lens blocks PASS until the uncovered remainder has been attacked.
+Each lens declares coverage: FULL, or PARTIAL plus what it read. PARTIAL coverage on any lens blocks PASS until the uncovered remainder has been attacked: re-invoke the same lens on the remainder, report one line per invocation (lens name, segment, state), and count the lens as run only when its invocations jointly reach FULL.
 
 ## Refuted findings
 
@@ -32,11 +32,11 @@ Stage-4 attackers and skeptic are never any agent or session that authored or di
 
 ## Non-convergence
 
-After three consecutive fix rounds that each end with any confirmed finding — a newly introduced defect, or the original defect still standing unfixed — stop. Report the pattern to the user and question the fix approach itself before burning a fourth round.
+After three consecutive fix rounds that each end with any confirmed finding — a newly introduced defect, or the original defect still standing unfixed — stop. Report the pattern to the user and question the fix approach itself before burning a fourth round. If the user authorizes continuing, the counter resets to zero, and the stop fires again after the next three consecutive confirming fix rounds. A clean fix round also resets the counter.
 
 ## Interruption and standing state
 
-A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS, so an interrupted review keeps its record. Every round close performs three steps: add the round's confirmed rows to the Confirmed defects table; update the Process and Status lines; compare the live ledger's header instructions against `ledger-template.md` (which is canonical for sectioning and placement) and re-sync the header if they differ.
+A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS, so an interrupted review keeps every closed round's record. A round interrupted between attack and adjudication is void: its raised findings are unadjudicated claims — discard them, and the resuming session re-runs that round from stage 2. Every round close performs three steps: add the round's confirmed rows to the Confirmed defects table; update the Process and Status lines; compare the live ledger's header instructions against `ledger-template.md` (which is canonical for sectioning and placement) and re-sync the header if they differ.
 
 Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when.
 

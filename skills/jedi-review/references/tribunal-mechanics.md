@@ -16,7 +16,7 @@ Every lens reports its strongest failed attacks alongside its findings. A lens r
 
 ## Lens failure states
 
-A lens that cannot dispatch runs serially, or in-line by the orchestrator as last resort. A lens that errored or never returned is reported DID NOT RUN; a round containing one cannot reach the gate. The in-line-by-orchestrator fallback never applies to a stage-4 lens when the orchestrator authored or directed the fix under review: such a lens runs as a subagent, or is reported DID NOT RUN, blocking the gate. If that rule would leave every stage-4 lens DID NOT RUN (no dispatch available and the orchestrator authored or directed the fix), the review pauses: report the blocked state to the user and hand stage 4 to a session or agent that did not author or direct the fix.
+A lens that cannot dispatch runs serially, or in-line by the orchestrator as last resort. A lens that errored or never returned is reported DID NOT RUN; a round containing one cannot reach the gate. The in-line-by-orchestrator fallback never applies to a fix-round or gate-round lens when the orchestrator authored or directed a fix under review: such a lens runs as a subagent, or is reported DID NOT RUN, blocking the gate. If that rule would leave every lens of such a round DID NOT RUN (no dispatch available and the orchestrator authored or directed the fixes), the review pauses: report the blocked state to the user and hand the round to a session or agent that did not author or direct the fixes.
 
 ## Coverage
 
@@ -35,11 +35,11 @@ An attacker may re-raise a REFUTED finding once, only with new evidence the skep
 
 ## Fix-author independence
 
-Stage-4 attackers and skeptic are never any agent or session that authored or directed the fix under review. No author or director of a fix communicates anything about it beyond its stated claim ("what it fixes, where") to any stage-4 participant — attacker or skeptic, before or during the round. Attackers are briefed on a fix only via that stated claim; the skeptic receives the attackers' findings, as stage 3 requires.
+These rules bind every round that reviews or gates fixed work — fix rounds and gate rounds alike. Their attackers and skeptic are never any agent or session that authored or directed a fix under review. No author or director of a fix communicates anything about it beyond its stated claim ("what it fixes, where") to any participant of those rounds — attacker or skeptic, before or during the round. Attackers are briefed on a fix only via that stated claim; the skeptic receives the attackers' findings, as stage 3 requires.
 
 ## Non-convergence
 
-After three consecutive fix rounds that each end with any confirmed finding — a newly introduced defect, or the original defect still standing unfixed — stop. Report the pattern to the user and question the fix approach itself before burning a fourth round. If the user authorizes continuing, the counter resets to zero, and the stop fires again after the next three consecutive confirming fix rounds. A clean fix round also resets the counter.
+A confirming round is any round — fix round or gate round — that ends with at least one confirmed finding: a newly introduced defect, a newly surfaced one, or an original still standing unfixed. After three confirming rounds, counted from the review's start, its last PASS, or the user's last authorization to continue — clean rounds in between do not reset the count — stop. Report the pattern to the user and question the fix approach itself before burning another round. User authorization resets the count to zero.
 
 ## Interruption and standing state
 

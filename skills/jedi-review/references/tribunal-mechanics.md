@@ -45,7 +45,7 @@ A confirming round is any round — fix round or gate round — that ends with a
 
 A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS, so an interrupted review keeps every closed round's record. A round interrupted between attack and adjudication is void: its raised findings are unadjudicated claims — discard them, and the resuming session re-runs that round from stage 2. Every round close performs three steps: add the round's confirmed rows to the Confirmed defects table; update the Process and Status lines; compare the live ledger's header instructions against `ledger-template.md` (which is canonical for sectioning and placement) and re-sync the header if they differ.
 
-Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when. PASS ends the review; any later review of the same target — deeper lenses included — is a new review, with its own ledger section and a fresh count.
+Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when. PASS and SHIPPED OVER OPEN FINDINGS each end the review — OPEN is the only in-progress status. Any later review of the same target — deeper lenses or the shipped-over findings included — is a new review, with its own ledger section and a fresh count.
 
 ## Pre-existing ledger
 

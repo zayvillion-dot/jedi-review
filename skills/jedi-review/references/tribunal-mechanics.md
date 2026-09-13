@@ -20,7 +20,14 @@ A lens that cannot dispatch runs serially, or in-line by the orchestrator as las
 
 ## Coverage
 
-Each lens declares coverage: FULL, or PARTIAL plus what it read. PARTIAL coverage on any lens blocks PASS until the uncovered remainder has been attacked: re-invoke the same lens on the remainder, report one line per invocation (lens name, segment, state), and count the lens as run only when its invocations jointly reach FULL.
+Each lens declares coverage: FULL, or PARTIAL plus what it read. PARTIAL coverage on any lens blocks PASS until the uncovered remainder has been attacked: re-invoke the same lens on the remainder, report one line per invocation carrying the lens name, the segment it read, and that invocation's own findings or attack record — for example:
+
+```
+ambiguity [PARTIAL: files A–M] 2 raised
+ambiguity [remainder: files N–Z] 0 raised, attacks recorded
+```
+
+The lens counts as run only when its invocations' segments jointly reach FULL coverage of the target.
 
 ## Refuted findings
 

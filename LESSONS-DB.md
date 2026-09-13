@@ -9,7 +9,7 @@ Running database of confirmed defects, their root causes, and the prevention rul
 ## Review: 2026-09-08 — jedi-review skill package (self-review)
 
 **Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md; + tribunal-mechanics.md, created by round-1 fixes and in scope from round 2), doc/spec target, 5 files ~260 lines
-**Process:** rounds: 3 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0; round 3 (fix re-review): fix-refutation (0 raised, attack record filed), fix-blast-radius (2) — raised 5 / confirmed 4 / refuted 1; round 4 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 6 / confirmed 5 / refuted 1 — **non-convergence stop triggered** (third consecutive confirming fix round)
+**Process:** rounds: 3 — round 1: ambiguity, internal contradiction, omission (3) — raised 31 (24 distinct) / confirmed 22 / refuted 2; round 2 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 12 (8 distinct) / confirmed 8 / refuted 0; round 3 (fix re-review): fix-refutation (0 raised, attack record filed), fix-blast-radius (2) — raised 5 / confirmed 4 / refuted 1; round 4 (fix re-review): fix-refutation, fix-blast-radius (2) — raised 6 / confirmed 5 / refuted 1 — **non-convergence stop triggered** (third consecutive confirming fix round); round 5 (fix re-review, resumed on user go-ahead 9/12): fix-refutation, fix-blast-radius (2) — raised 3 / confirmed 3 / refuted 0 — **non-convergence stop re-triggered; user chose mechanism-form pass + gate 9/13**
 **Status:** OPEN
 
 ### Confirmed defects
@@ -55,6 +55,9 @@ Running database of confirmed defects, their root causes, and the prevention rul
 | R4-4 | The independence rule's parenthetical defined director as "designed and directed" (conjunctive) while the fallback bar triggers on "directed" alone — the inverted-strictness gap re-opened one clause deeper for directed-only orchestrators. | The broadened wording introduced its own definition instead of reusing the sibling clause's terms. | When aligning two rules, use identical operative words, not a paraphrase. |
 | R4-5 | "Briefed only on the fix's stated claim, nothing more, from anyone" read literally bars the skeptic from receiving the findings stage 3 requires it to adjudicate — live practice cannot satisfy the letter. | Closing a narrow briefing loophole with universal language swept in legitimate information flows. | Scope an information-cap rule to the flow it polices; test the letter against each stage's required inputs. |
 | R4-6 | The live ledger header became a third divergent paraphrase of the one-section rule — recommitting the already-ledgered R2-4 defect class ("one source of truth") in the same commit that cited it. | The fix pasted a paraphrase instead of a reference. | State a rule once; instances point to it. |
+| R5-1 | The template re-sync rule fired only "if a disagreement is ever noticed," and the round-close checklist contained no step that would notice one — the drift mechanism survived a third patch. | A conditional rule shipped without its detection step. | Every conditional rule ships with the unconditional step that detects its condition. |
+| R5-2 | The lens-accountability test enumerated two appearance states while the sibling rule defined a third (DID NOT RUN) that satisfies neither — a compliant report failed the test. | A closed enumeration was written without sweeping sibling rules for states they create. | Before closing an enumeration, sweep sibling rules for every state they can produce. |
+| R5-3 | The briefing cap sat nested inside the attacker-briefing sentence, leaving the author→skeptic channel textually open — fourth recurrence of the independence-loophole class. | A scope-limited sentence carried a rule that needed freestanding scope. | A rule policing a risk binds every channel to that risk in its own freestanding sentence. |
 
 ### Deliberate decisions (not bugs — do not "fix")
 
@@ -64,7 +67,8 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ### Follow-ups
 
-- **NON-CONVERGENCE STOP (2026-09-08)** was reported to the user with three options; **user resumed the review 2026-09-12 (option a: surgical fix pass + gate round)**. R4-1/R4-3/R4-4/R4-5/R4-6 fixes applied per the ledger's own prevention rules (identical operative words, references not paraphrases, property not instance). Round-5 fix re-review pending, then the gate round.
+- **NON-CONVERGENCE STOP (2026-09-08)** → user resumed 9/12 (option a) → round 5 confirmed 3/3 → **stop re-fired**; reported to user with the pattern diagnosis (fixes were instance patches, not closing forms) → **user chose mechanism-form pass + gate (9/13)**. R5-1/2/3 fixes applied in closing forms: unconditional detection step in the round close, exhaustive three-state enumeration, freestanding all-channel briefing cap. Round-6 fix re-review pending, then the gate round.
+- Round-5 close header check (new step, first run): live header carries the canonical pointer to `ledger-template.md`; instruction content matches the template's rule — in sync, no re-sync needed.
 - R3-4 (Status computability) REFUTED round 3: status is set contemporaneously by the round-closing agent, not derived from table rows. R4-2 (ledger-in-scope) REFUTED round 4: the ledger is a process artifact, not the deliverable.
 
 ---

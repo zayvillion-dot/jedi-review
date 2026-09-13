@@ -12,7 +12,7 @@ Round 1 = the full declared tribunal. Fix rounds = the Fix re-review menu (see `
 
 ## Lens accountability
 
-Every lens reports its strongest failed attacks alongside its findings. A lens returning zero findings and no attack record did not run — the round is incomplete. In round reports, every finding line names its lens, and every declared lens appears — with findings, or with its attack record — so a silent lens is visible no matter which lens goes silent.
+Every lens reports its strongest failed attacks alongside its findings. A lens returning zero findings and no attack record did not run — the round is incomplete. In round reports, every finding line names its lens, and every declared lens appears in exactly one of three states: with findings, with its attack record, or as DID NOT RUN (per Lens failure states) — so a silent lens is visible no matter which lens goes silent.
 
 ## Lens failure states
 
@@ -28,7 +28,7 @@ An attacker may re-raise a REFUTED finding once, only with new evidence the skep
 
 ## Fix-author independence
 
-Stage-4 attackers and skeptic are never any agent or session that authored or directed the fix under review. Attackers are briefed on a fix only via its stated claim ("what it fixes, where") — no author or director adds anything beyond that claim. The skeptic receives the attackers' findings, as stage 3 requires.
+Stage-4 attackers and skeptic are never any agent or session that authored or directed the fix under review. No author or director of a fix communicates anything about it beyond its stated claim ("what it fixes, where") to any stage-4 participant — attacker or skeptic, before or during the round. Attackers are briefed on a fix only via that stated claim; the skeptic receives the attackers' findings, as stage 3 requires.
 
 ## Non-convergence
 
@@ -36,7 +36,7 @@ After three consecutive fix rounds that each end with any confirmed finding — 
 
 ## Interruption and standing state
 
-A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS — add rows to the Confirmed defects table, update the Process and Status lines — so an interrupted review keeps its record. Sectioning and placement rules live in `ledger-template.md`, which is canonical; if a live ledger's header instructions ever disagree with the template, re-sync the header to the template at the next round close.
+A review keeps one ledger section, updated as each round's adjudication closes, not only at PASS, so an interrupted review keeps its record. Every round close performs three steps: add the round's confirmed rows to the Confirmed defects table; update the Process and Status lines; compare the live ledger's header instructions against `ledger-template.md` (which is canonical for sectioning and placement) and re-sync the header if they differ.
 
 Status takes one of three values: OPEN while any confirmed finding stands; PASSED, with date, the moment the gate round confirms zero findings; or SHIPPED OVER OPEN FINDINGS the moment the user ships anyway despite open findings, recorded with who shipped and when.
 

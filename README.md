@@ -61,6 +61,17 @@ tests/
 
 Built RED before GREEN: a generalist single-pass review was run against a seeded-defect fixture under time, authority, and sunk-cost pressure, and the failures it produced are what this skill's six stages are built to close. See `tests/red-baseline.md` for the baseline run, `tests/green-run.md` for the same scenario re-run with the skill applied, and `tests/ANSWER-KEY.md` for the seeded defects the baseline missed or hedged on.
 
+## When to run it — and when not to
+
+This is a milestone gate, not a per-step habit. It is deliberately expensive: every round dispatches parallel subagents (attackers, then a skeptic), and the loop does not stop at "looks good" — it stops at zero confirmed findings or at its own non-convergence valve. Budget accordingly.
+
+- **Run it** when a piece of work is *finished by its author's own standard* and is about to ship, merge, or go to a counterparty: a feature branch before merge, a quote or contract before it leaves the building, a plan before you commit resources to it, a skill or spec before you publish it.
+- **Don't run it** on work in progress, on every commit, or as a substitute for tests. The tribunal reviews finished claims; half-built work just generates findings you already knew about.
+- **Expect real cost.** A small document is a few subagent runs. A large codebase at 5–7 lenses, with fix re-review rounds and full-tribunal gate rounds, can run for hours — and on a big enough target with a strict bar, days. That precision is the point: the zero-confirmed-defect gate is a Six Sigma posture, and you pay for sigma in rounds.
+- **The stops are a feature.** When the non-convergence rule fires, the review isn't broken — it's telling you the fix *approach* is minting new defects, and handing the call to a human. Answer the question it asks; don't just re-run it.
+- **Scale the tribunal to the target.** Two or three lenses for a small memo; the full bench for a launch. The lens menus and sizing rules are in `skills/jedi-review/references/attack-lenses.md`.
+- **Keep the ledger.** The `LESSONS-DB.md` it maintains in each target repo is where the compounding value lives — every confirmed defect leaves behind the prevention rule it taught, and reviewers consult it before similar work.
+
 ## Origin story
 
 The skill's first real target was itself, and the review took fourteen rounds to pass. Its own tribunal confirmed 56 defects in this package — including defects in the protocol's own constitution: a phantom lens its example cited before any menu defined it, an escape hatch its rationalization table explicitly forbids, a fallback rule that would have let a fix's author grade its own fix, and a safety-valve counter blind to the exact thrash loop it guarded against. The non-convergence rule fired twice and stopped the review both times for a human decision rather than rubber-stamping its author; the counter rule, one round after being written, caught its own author's miscount. Gate round one confirmed eight findings, gate round two confirmed two, and gate round three ran clean — PASS at zero confirmed findings, every lens filing its attack record. The full round-by-round record lives in this repo's own `LESSONS-DB.md`. The gate does not have a "good enough" exit, even for the skill that defines it.

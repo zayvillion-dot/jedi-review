@@ -50,12 +50,20 @@ skills/jedi-review/
                                    quotes/financial, deep-mode grafts
   references/ledger-template.md   starter template for a target's LESSONS-DB.md
   references/tribunal-mechanics.md  edge-state and independence rules for the tribunal
+skills/overhaul/
+  SKILL.md                        the seven-stage loop for a live human test-pass session
+  references/register-template.md   living issue-register shape for the session plan file
+  references/leg-prompt-template.md  dispatch-prompt shape for each Opus/Sonnet fix leg
 tests/
   fixture/                        seeded-defect pricing memo + discount module
   ANSWER-KEY.md                   sealed defect list, for scoring only
   red-baseline.md                 the pre-skill baseline run this skill was built against
   green-run.md                    the post-skill re-run confirming all seeded defects
 ```
+
+## Companion skill: overhaul
+
+`skills/overhaul/` encodes a different but related rhythm: a live human test-pass feeding in findings while testing continues, triaged into a running register, mapped for cross-cutting causes, and delegated to Opus/Sonnet fix legs — each of which ends in a `jedi-review` pass before it merges. Invoke with `/overhaul` or "let's overhaul this." See `skills/overhaul/SKILL.md`.
 
 ## Tested
 

@@ -6,6 +6,44 @@ Running database of confirmed defects, their root causes, and the prevention rul
 
 ---
 
+## Review: 2026-09-20 — overhaul skill (skills/overhaul/SKILL.md + references/register-template.md + references/leg-prompt-template.md)
+
+**Scope:** doc/spec target — new companion skill, 3 files (~71-line SKILL.md + two reference templates), first review
+**Process:** rounds: 2 — round 1: ambiguity, internal contradiction (2) + fresh skeptic — raised 12 / confirmed 7 / refuted 5 → fix round 1 (six grouped fixes, `5f3521d`); round 2 (fix re-review: fix-refutation, fix-blast-radius; concurrent gate 1: ambiguity, internal contradiction) + fresh skeptic — pooled 8 raised / confirmed 5 / refuted 3 (fix round 7/4/3; gate 4/4/0 → **Gate 1: FAIL**) → fix round 2 (three grouped fixes, `bbe7c5b`); round 3 (fix re-review + gate 2) in progress. Non-convergence counter: 2 confirming rounds.
+**Status:** OPEN
+
+### Confirmed defects
+
+| ID | Defect | Root cause | Prevention rule |
+|---|---|---|---|
+| D1 | Stage 3 said "a leg … runs 5x-think first / grill-me first" — the actor was the leg, not the orchestrator, and the dispatch template had no field for either gate, so under the subagent reading nobody runs them (grill-me needs a channel to the user a subagent lacks) | A stage rule personified the work unit instead of naming who performs it and when | Every gate names its actor and its timing; a dispatch template carries a line recording that the gate ran and its outcome |
+| D2 | "targeted tests only (never the full suite from two worktrees at once)" — the parenthetical licensed exactly what the main clause banned (a lone leg reads it as permission to run the 8-minute suite from its worktree) | A prohibition softened by a quantified exception in parentheses | State a prohibition once, categorically; put the reason in a separate sentence, never a quantified exception in parentheses |
+| D3 | The ownership-table worked example gave two legs one file with "merge 6 first" and no sequencing word — the exact situation the red flag ("two legs with write access to the same file at the same time") says to stop for | The example was written from the real session's table without checking it against the rule it illustrates | Every worked example must satisfy the rule it illustrates; same-file legs are sequenced with "then" and the order is written |
+| D4 | Stage 6 ended "Loop to stage 1", silently dropping stage 7 (hand-back) from the per-deploy cycle although the title says "7 stages, looped" — the live re-test needs its WHAT/WHERE/HOW items each loop | The loop sentence named the destination but not the last stage it passes through | When a numbered contract loops, the loop sentence names the final stage that runs before the jump |
+| D5 | "Update the leg's register row to `merged`" against a column named Status/leg whose examples hold leg identities — overwrite vs append both readable; overwrite loses which leg closed the finding; no example showed the terminal state | Lifecycle column documented only in its middle states | Show the terminal state of every lifecycle column in the example table |
+| D6 | Leg-prompt template mandated branch `session/<integration>/<leg>` off `session/<integration>` — git refuses a ref nested under an existing branch ref (`cannot lock ref`), reproduced by the skeptic; the source session had already hit it and switched to flat names | A naming pattern chosen for readability and never executed | Any command or name pattern a skill prescribes is executed once before the skill ships |
+| D7 | The per-leg test-scope rule appeared in SKILL.md as a concurrency-only ban and in leg-prompt-template.md as a categorical ban — the dispatched subagent reads only the stricter one, the orchestrator the looser one | The same rule paraphrased in two files | A rule that appears in two files is quoted verbatim in both, or stated once and referenced |
+| D8 (R2, introduced by fix D2/D7) | The rewritten stage-4 sentence spliced "…on the integration branch, commit to the branch…" so the nearest antecedent told legs to commit onto the shared branch pre-review | A fix inserted a competing antecedent into a run-on sentence | When a fix adds a clause, re-read every pronoun/definite noun after it for a new antecedent; prefer two short sentences |
+| D9 (R2, introduced by fix D2/D7) | "the full suite runs at the batch gate" named a gate no stage performed — a literal follow deployed without ever running the suite | A fix asserted a checkpoint without staging it in the contract | Every gate a skill names must appear as a step in a numbered stage; grep the term after writing it |
+| D10 (R2, introduced by fix D6) | The flat-branch fix renamed only one of two placeholders, leaving `<integration-slug>` vs `<integration-branch>` (and the register's `<name>`) — three tokens for one value | Partial rename inside one sentence | Rename a placeholder everywhere it appears in the same edit, and use one token per concept across files |
+| D11 (R2, survived) | The ownership table's "6 merges first" and the batching rule's "ship as soon as gated; don't hold for a slower leg" had no tiebreaker when the later-sequenced leg gates first | Two rules written for different concerns (file safety, deploy speed) never reconciled at their intersection | When two rules can both apply to one event, write the tiebreaker sentence next to the looser rule |
+| D12 (R2, survived) | "same-file legs are sequenced" pinned merge order only; a later leg's worktree could be cut off a stale base | "Sequenced" left the observable event (worktree cut vs merge) unnamed | A sequencing rule names the event it gates on |
+
+### Deliberate decisions (not bugs — do not "fix")
+
+| Decision | Rationale |
+|---|---|
+| "gated" (cleared the jedi-review gate) alongside "gated on X, BLOCKED" (waiting on X) | Every occurrence carries its own disambiguator — the blocked sense always takes a complement plus an explicit BLOCKED marker (A1 refuted) |
+| "a mechanism the codebase doesn't already have" means the whole repository | The standing rule "5x-think gates any NEW mechanism; not required for a fix, a doc, or a rename" pins it from the other side (A2 refuted) |
+| "wave" = findings from the human; "batch" = gated legs shipped together; batching hangs on no wave count | Independent rule: "ship a batch as soon as its own legs are jedi-review-gated" (A6 refuted) |
+| Stage 4 "its own git worktree/branch" is a disjunction; the register boilerplate's "worktree per parallel leg" narrows, not contradicts | A serial leg satisfies the rule with a branch alone (C4 refuted) |
+
+### Follow-ups
+
+- (none yet)
+
+---
+
 ## Review: 2026-09-08 — jedi-review skill package (self-review)
 
 **Scope:** jedi-review skill package (SKILL.md, attack-lenses.md, ledger-template.md, README.md; + tribunal-mechanics.md, created by round-1 fixes and in scope from round 2), doc/spec target, 5 files ~260 lines

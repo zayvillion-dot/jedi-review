@@ -9,6 +9,7 @@ Lives inside the session's plan file (e.g. `~/.claude/plans/<session>.md`), not 
 | 1 | Invoice detail page | Delete button does nothing | P0 broken control | Leg 1 (Sonnet) |
 | 2 | Global mobile nav | Nav bar overlaps page content on phones | P1 layout | Leg 2 probe → Leg 4 fix |
 | 3 | Settings page | Typo: "Pasword" | P3 cosmetic | Leg 1 (Sonnet) |
+| 4 | Settings page | Save button double-submits on slow connections | P1 UX/functionality friction | Leg 1 (Sonnet) — merged |
 
 Severity is the reporter's own sense of impact (P0 broken/blocking, P1 UX/functionality friction, P2 polish, P3 cosmetic) — don't renegotiate it during intake, only during planning.
 
@@ -45,7 +46,7 @@ Table built during stage 3, before any leg starts, so two legs never write the s
 | File | Owning leg(s) |
 |---|---|
 | `app/templates/base.html` | Leg 2 (nav lines only), then Leg 5 |
-| `app/routes/sales/clients.py` | Leg 6 (create/edit), Leg 7 (search) — different functions, merge 6 first |
+| `app/routes/sales/clients.py` | Leg 6 (create/edit), **then** Leg 7 (search) — different functions, 6 merges first |
 
 ## Batching
 

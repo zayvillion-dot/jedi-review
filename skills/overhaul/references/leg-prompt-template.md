@@ -10,17 +10,22 @@ Owns: <exact file list — new files marked NEW; nothing outside this list>
 Context: <the finding row(s) from the register this leg closes, plus the
 confirmed root cause from the explorer report — cite file:line>
 
-Worktree: <path>, branch `session/<integration-branch>/<leg-slug>` off
+Worktree: <path>, branch `session/<integration-slug>-<leg-slug>` (flat — git
+refuses a branch nested under an existing branch ref) created off
 `session/<integration-branch>`. If the repo needs a symlinked venv / seeded
 db / other per-worktree setup, say so explicitly here — don't make the
 subagent guess.
+
+Gate run: <5x-think | grill-me | none — outcome in one line, so the subagent
+never thinks it must run the gate itself>
 
 Steps:
 1. <concrete step, file:line references where known>
 2. <...>
 
-Tests: <exact test files to add/run — targeted only, never the full suite
-from a worktree that isn't the integration branch>
+Tests: <exact test files to add/run — targeted tests only — never the full
+suite from a leg worktree; the full suite runs at the batch gate on the
+integration branch>
 
 Constraints:
 - Single-owner files only — if you need to touch a file this leg doesn't
@@ -37,5 +42,5 @@ Constraints:
 1. Diff review by the intake agent: does the diff match "Owns" and "Steps," nothing more?
 2. Dispatch `jedi-review` (2–3 lenses small, 5–7 large) against the leg's branch/diff.
 3. CONFIRMED findings → fixed on the same branch, re-reviewed (fix re-review, not a fresh full round) → `LESSONS-DB.md`.
-4. Gate clean → merge into the integration branch. Update the leg's register row to `merged`.
+4. Gate clean → merge into the integration branch. Append `— merged` to the leg's register row (keep the leg name).
 5. Leg joins the next ready batch (see register template, "Batching").

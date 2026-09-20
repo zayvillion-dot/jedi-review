@@ -55,4 +55,4 @@ Group legs into deploy batches so the human can re-test live mid-session rather 
 - **Batch 1** — quick wins + any probes, so the next wave of findings arrives informed.
 - **Batch 2+** — the legs gated on batch 1's probe results, plus anything else ready.
 
-Ship a batch as soon as its own legs are jedi-review-gated; don't hold it for a slower parallel leg — that leg joins the next batch.
+Ship a batch as soon as its own legs are jedi-review-gated; don't hold it for a slower parallel leg — that leg joins the next batch. The one exception: a leg sequenced behind an unmerged same-file leg always waits for its predecessor's merge, gated or not.

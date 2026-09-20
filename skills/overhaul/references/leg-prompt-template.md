@@ -10,9 +10,10 @@ Owns: <exact file list — new files marked NEW; nothing outside this list>
 Context: <the finding row(s) from the register this leg closes, plus the
 confirmed root cause from the explorer report — cite file:line>
 
-Worktree: <path>, branch `session/<integration-slug>-<leg-slug>` (flat — git
-refuses a branch nested under an existing branch ref) created off
-`session/<integration-branch>`. If the repo needs a symlinked venv / seeded
+Worktree: <path>, branch `session/<name>-<leg-slug>` — flat, where `<name>` is
+the same slug as the session's integration branch `session/<name>` (git
+refuses a branch nested under an existing branch ref) — created off
+`session/<name>`. If the repo needs a symlinked venv / seeded
 db / other per-worktree setup, say so explicitly here — don't make the
 subagent guess.
 
@@ -23,9 +24,9 @@ Steps:
 1. <concrete step, file:line references where known>
 2. <...>
 
-Tests: <exact test files to add/run — targeted tests only — never the full
-suite from a leg worktree; the full suite runs at the batch gate on the
-integration branch>
+Tests: <exact test files to add/run — targeted tests only; never run the full
+suite from this worktree, the intake agent runs it on the integration branch
+at stage 6>
 
 Constraints:
 - Single-owner files only — if you need to touch a file this leg doesn't

@@ -27,7 +27,7 @@ Running list of judgment calls the user made or approved during the session, dat
 
 - Intake agent (this session): receives findings page-by-page, updates this register, maps cross-cutting causes, dispatches legs.
 - Implementation: Opus (hard) / Sonnet (routine) subagents; integration branch `session/<name>` off main, worktree per parallel leg; single-owner files per leg (ownership table below).
-- Every leg ends in a **jedi-review** pass (2–3 lenses small / 5–7 large) before merge; ledger to `LESSONS-DB.md`.
+- Every leg ends in a **jedi-review** pass (lens count set by jedi-review's own stage 1 Scope) before merge; ledger to `LESSONS-DB.md`.
 - Skills in force: `5x-think` before any new mechanism; `grill-me` for ambiguous scope.
 
 ## Findings (explorer subagent reports)
@@ -41,7 +41,7 @@ One subsection per explored area, evidence-first — every claim carries a file:
 
 ## Waves
 
-A wave is the set of legs dispatched to run concurrently. Cap: **5 concurrent legs**, disjoint files. A leg that would push a wave past 5, or that collides on a file already owned in this wave, goes into the next wave instead — never squeezed in.
+A wave is the set of legs dispatched to run concurrently, always disjoint files. Cap: see `wave-batch-runbook.md`'s session-wide concurrency limit (not per-wave, and counting reviewers alongside builders) — that file is the one definition, this row doesn't restate the number. A leg that would push the session total past the cap, or that collides on a file already owned in this wave, goes into the next wave instead — never squeezed in.
 
 | Wave | Legs (dispatched together) | Status |
 |---|---|---|

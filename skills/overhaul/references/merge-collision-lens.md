@@ -8,7 +8,7 @@ This is not jedi-review's fix-blast-radius lens (that one attacks a single fix's
 
 For every auto-merged shared file, prove — in both directions — that the merged file contains the exact union of both sides' deltas:
 
-1. Diff the pre-merge file against each side's post-change version independently.
+1. Diff the **merge base** (`git merge-base` of the two sides, not the integration branch's pre-merge tip) against each side's post-change version independently. For a leg vs. a moving `origin/main`, the integration branch's own pre-merge version already contains that leg's delta and is not the common base — diffing against it makes the leg's side of the proof vacuous.
 2. Diff the merged file against each side's post-change version.
 3. Every line either side added is present in the merged file (no lost-line).
 4. No line survives in the merged file that either side had deleted (no resurrected-line).
@@ -20,6 +20,10 @@ Two changes landed on the same paper-rendering file: one gated a discount label 
 
 Fix pattern: pull the gating predicate into one shared function all six call sites use, so the sixth reader can't silently diverge from the other five's rule.
 
+## Adjudication
+
+This lens is a jedi-review lens, not a self-graded check: its findings go through jedi-review's own stage 3 (Adjudicate) — a fresh skeptic, never this lens, returns CONFIRMED or REFUTED — and its confirmed findings go to that project's `LESSONS-DB.md` per jedi-review's stage 6. Do not report a verdict here without that adjudication step; see `SKILL.md` stage 5 for the same rule applied to every other leg review.
+
 ## Report format
 
 ```
@@ -27,18 +31,19 @@ Merge-collision lens (Leg 6 × Leg 7, file app/templates/base.html):
   Lost-line: 0/0 both directions
   Resurrected-line: 0/0 both directions
   True conflicts: 1 (nav include block) — resolution re-attacked: CLEAN
-  Verdict: MERGE CLEAN
+  Verdict: MERGE CLEAN (adjudicated: 0 confirmed)
 ```
 
 or, when the lens finds something:
 
 ```
-Merge-collision lens (W-H4 × Leg 16b, file _paper_context.py):
+Merge-collision lens (Leg 8 × Leg 9, file app/services/pricing_context.py):
   Lost-line: 0/0 both directions
   Resurrected-line: 0/0 both directions
   True conflicts: 0 (no shared lines — the defect is behavioral, not textual)
-  Verdict: 1 MED — a sixth reader added by one side doesn't honor a gating
-    predicate the other side just introduced on five siblings.
+  Verdict: 1 MED (skeptic-adjudicated, CONFIRMED) — a sixth reader added by
+    one side doesn't honor a gating predicate the other side just introduced
+    on five siblings.
   → dispatched as its own fix leg, single-owner file, jedi-reviewed before
     it re-enters the batch.
 ```

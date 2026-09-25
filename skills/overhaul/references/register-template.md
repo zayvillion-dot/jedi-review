@@ -39,14 +39,25 @@ One subsection per explored area, evidence-first — every claim carries a file:
 - `<root cause, one paragraph, file:line citations throughout>`
 - Tests that pin this area: `<test files>`.
 
+## Waves
+
+A wave is the set of legs dispatched to run concurrently. Cap: **5 concurrent legs**, disjoint files. A leg that would push a wave past 5, or that collides on a file already owned in this wave, goes into the next wave instead — never squeezed in.
+
+| Wave | Legs (dispatched together) | Status |
+|---|---|---|
+| Wave A | Leg 1 (Sonnet), Leg 2 (Sonnet), Leg 3 (Opus) | running |
+| Wave B | Leg 4 (after Wave A — shares a file with Leg 2) | queued |
+
 ## Cross-leg file ownership
 
-Table built during stage 3, before any leg starts, so two legs never write the same file concurrently:
+Table built during stage 3, **before any leg in the wave starts**, so two concurrently running legs never write the same file:
 
 | File | Owning leg(s) |
 |---|---|
 | `app/templates/base.html` | Leg 2 (nav lines only), then Leg 5 |
 | `app/routes/sales/clients.py` | Leg 6 (create/edit), **then** Leg 7 (search) — different functions, 6 merges first |
+
+A row naming a concurrently running session's own leg (not this session's) marks it `EXTERNAL — ticket only`, never dispatched against.
 
 ## Batching
 

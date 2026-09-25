@@ -41,7 +41,7 @@ One subsection per explored area, evidence-first — every claim carries a file:
 
 ## Waves
 
-A wave is the set of legs dispatched to run concurrently, always disjoint files. Cap: see `wave-batch-runbook.md`'s session-wide concurrency limit (not per-wave, and counting reviewers alongside builders) — that file is the one definition, this row doesn't restate the number. A leg that would push the session total past the cap, or that collides on a file already owned in this wave, goes into the next wave instead — never squeezed in.
+A wave is the set of legs dispatched to run concurrently, always disjoint files. Cap: see `wave-batch-runbook.md`'s concurrency limit — that file is the one definition, this row doesn't restate it. A leg that would push the session total past the cap, or that collides on a file already owned in this wave, goes into the next wave instead — never squeezed in.
 
 | Wave | Legs (dispatched together) | Status |
 |---|---|---|

@@ -54,6 +54,9 @@ skills/overhaul/
   SKILL.md                        the seven-stage loop for a live human test-pass session
   references/register-template.md   living issue-register shape for the session plan file
   references/leg-prompt-template.md  dispatch-prompt shape for each Opus/Sonnet fix leg
+  references/wave-batch-runbook.md   wave/batch/pre-flight/deploy mechanics for stages 3 and 6
+  references/merge-collision-lens.md  merge-collision lens brief, run on every auto-merged shared file
+  references/quality-and-reporting.md  quality bar, rationalization table, report format, extended red flags
 tests/
   fixture/                        seeded-defect pricing memo + discount module
   ANSWER-KEY.md                   sealed defect list, for scoring only

@@ -23,14 +23,14 @@ contract short. Nothing here is optional; it's just not inline.
 | "Fold the console steps into one paragraph" | A step buried in prose is a step that gets re-parsed wrong; per-item WHAT/WHERE/HOW is what makes it executable without a follow-up question. |
 | "The gate came back red/killed, just re-run it" without checking why | rc 143/137 really is safe to re-run — but only back through the full pre-flight again (`wave-batch-runbook.md`), not a direct re-launch; any other red is a leg of its own, diagnosed before the next gate. |
 | "It's just a comment, it can say anything" | A comment sharing a file with a substring test can silently satisfy or break that test. |
-| "One more leg fits in this wave" | The concurrency cap (`wave-batch-runbook.md` — session-wide, disjoint files) is what keeps a wave reviewable; a sixth leg is next wave's problem, not this one's. |
+| "One more leg fits in this wave" | The concurrency cap (`wave-batch-runbook.md`) is what keeps a wave reviewable; a sixth leg is next wave's problem, not this one's. |
 | "The scoped pass came back clean, that's good enough to merge" | A scoped pass narrows the FIX, never the REVIEW — it still owes jedi-review's own gate (stage 5) before merge. |
 
 ## Report format (batch close-out)
 
 ```
 Batch 2 — legs: 4 (Opus), 5 (Opus), 6 (Opus), 7 (Opus)
-Leg 4 multi-day mover: jedi-review 3 lenses, 0 confirmed → gate round clean → PASS → merged
+Leg 4 multi-day mover: jedi-review 3 lenses, 0 confirmed → round 1 is the gate round → PASS → merged
 Leg 5 nav anchoring: gated on Leg 3 probe, BLOCKED — probe pending
 Leg 6 client form: jedi-review 3 lenses, 1 confirmed → fixed, fix re-review clean, gate round clean → PASS → merged
 Merge-collision lens: 2 shared files, exact-union proof both directions, MERGE CLEAN (adjudicated: 0 confirmed)

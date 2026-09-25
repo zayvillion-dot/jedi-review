@@ -11,7 +11,7 @@ A live test pass produces findings faster than anyone can fix them; the register
 
 **REQUIRED SUB-SKILL:** jedi-review for stage 5 — this skill does not restate jedi-review's contract, gate, or non-convergence rule; it cites them. **Cross-referenced:** 5x-think (stage 3, new mechanisms only), grill-me (stage 3, ambiguous scope only).
 
-The orchestrator running these 7 stages is a register keeper, dispatcher, and merge/deploy operator — never a fix's author or director. That boundary is what keeps every jedi-review round this skill triggers independent (jedi-review's fix-author independence rule, `tribunal-mechanics.md`); an orchestrator who authors or directs a leg's fix cannot also staff that leg's review or gate round.
+The orchestrator running these 7 stages is a register keeper, dispatcher, and merge/deploy operator: the orchestrator dispatches; jedi-review's fix-author independence rule applies to attackers and skeptics — see `tribunal-mechanics.md`.
 
 ## The Contract — run 7 stages, looped per wave
 
@@ -63,10 +63,10 @@ The orchestrator running these 7 stages is a register keeper, dispatcher, and me
 ### 6. Batch & deploy
 
 - A **batch** is the set of jedi-review-gated legs merged into the integration branch together for one deploy.
-- Ship a batch as soon as its own legs are gated; don't hold it for a slower parallel leg in another wave — that leg joins the next batch. Exception: a leg sequenced behind an unmerged same-file leg always waits for that merge, gated or not.
+- Ship a batch as soon as its own legs are gated; don't hold it for a slower parallel leg — that leg joins the next batch. Exception: a leg sequenced behind an unmerged same-file leg always waits for that merge, gated or not.
 - Merge every gated leg into the integration branch. On every file two legs (or a leg and a moving `origin/main`) both touched, run the merge-collision lens (`references/merge-collision-lens.md`) — an exact-union proof, both directions, that no line either side wrote was lost, before trusting the merge.
 - Before running the batch gate, pre-flight (full checklist and remedies: `references/wave-batch-runbook.md`): the main working tree is clean, `main == origin/main` (`git log origin/main..main` empty), the integration branch fully contains `origin/main` (`git merge-base --is-ancestor origin/main <integration-tip>` — `main == origin/main` alone says nothing about the tip being gated and pushed), no push is currently in flight, and no foreign test process is already running (`pgrep -f run_all.py` or the project's suite entrypoint) — another session's suite can silently absorb or collide with this one.
-- Run the full suite exactly once, on the integration branch's final tip — never launch two gates against two different tips, and never gate a tip that is about to move. If `origin/main` moves again before the gate finishes, merge the new tip in, re-run the merge-collision lens on anything it touched, and gate the new tip instead — one gate, on the final tip, always. A push to `origin/main` that starts mid-gate, even before it lands, already makes your running gate's tip stale: kill it rather than wait for it to finish, then restart pre-flight once that push completes.
+- Run the full suite on the integration branch's final tip — never launch two gates against two different tips, and never gate a tip that is about to move. If `origin/main` moves again before the gate finishes, merge the new tip in, re-run the merge-collision lens on anything it touched, and gate the new tip instead — one gate, on the final tip, always. A push to `origin/main` that starts mid-gate, even before it lands, already makes your running gate's tip stale: kill it rather than wait for it to finish, then restart pre-flight once that push completes.
 - A killed gate (rc 143/137, or any signal-terminated run) is not a red run — it means something external killed it (a foreign suite starting, a session restart). Re-launch it back through the full pre-flight checklist above, not directly — the condition that killed it may still be true; do not read the signal itself as a failure.
 - A red suite blocks this deploy — no further legs merge into a red integration branch. It does not block other legs from continuing to build in their own worktrees. The fix for the red suite is itself a leg: diagnosed, fixed, jedi-reviewed, and merged before the gate re-runs; never patched directly on the integration branch.
 - Green gate → push/deploy, naming the human authorization it rests on (a standing session authorization such as "proceed with everything," or an explicit go for this specific deploy) — a green gate is a review verdict, not by itself a decision to ship.
@@ -89,7 +89,7 @@ Six Sigma defect rate on what ships, held by the jedi-review gate, not a hope; f
 - A leg merged into the integration branch without a jedi-review PASS.
 - A new mechanism built without running `5x-think` first.
 - Pushed, or merged a leg, from inside a leg's own worktree instead of the integration branch.
-- Merged a leg into, or patched, a red integration branch — the fix for a red suite is its own leg, gated, then merged; the trunk itself is never a patch target.
+- Merged a new leg into a red integration branch; the fix leg for the red suite is the one exception.
 - A leg subagent wrote into the main repo's working copy instead of its own worktree (a stray stash, commit, or edit outside the path its dispatch pinned).
 
 Extended list (same "stop" rule, moved out for length): `references/quality-and-reporting.md`.

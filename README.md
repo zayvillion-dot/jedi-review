@@ -50,13 +50,6 @@ skills/jedi-review/
                                    quotes/financial, deep-mode grafts
   references/ledger-template.md   starter template for a target's LESSONS-DB.md
   references/tribunal-mechanics.md  edge-state and independence rules for the tribunal
-skills/overhaul/
-  SKILL.md                        the seven-stage loop for a live human test-pass session
-  references/register-template.md   living issue-register shape for the session plan file
-  references/leg-prompt-template.md  dispatch-prompt shape for each Opus/Sonnet fix leg
-  references/wave-batch-runbook.md   wave/batch/pre-flight/deploy mechanics for stages 3 and 6
-  references/merge-collision-lens.md  merge-collision lens brief, run on every auto-merged shared file
-  references/quality-and-reporting.md  quality bar, rationalization table, report format, extended red flags
 tests/
   fixture/                        seeded-defect pricing memo + discount module
   ANSWER-KEY.md                   sealed defect list, for scoring only
@@ -66,7 +59,7 @@ tests/
 
 ## Companion skill: overhaul
 
-`skills/overhaul/` encodes a different but related rhythm: a live human test-pass feeding in findings while testing continues, triaged into a running register, mapped for cross-cutting causes, and delegated to Opus/Sonnet fix legs — each of which ends in a `jedi-review` pass before it merges. Invoke with `/overhaul` or "let's overhaul this." See `skills/overhaul/SKILL.md`.
+`overhaul` encodes a different but related rhythm: a live human test-pass feeding in findings while testing continues, triaged into a running register, mapped for cross-cutting causes, and delegated to Opus/Sonnet fix legs — each of which ends in a `jedi-review` pass before it merges. It now lives in its own repo: https://github.com/zayvillion-dot/overhaul
 
 ## Tested
 

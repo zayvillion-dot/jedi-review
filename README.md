@@ -1,5 +1,7 @@
 # Jedi Review
 
+![jedi-review](assets/social-preview.png)
+
 An adversarial review tribunal for Claude Code: parallel hostile attack lenses, findings put on trial before anyone acts on them, and fixes re-attacked as new attack surface — with a gate that opens only at zero confirmed defects.
 
 ## The doctrine
